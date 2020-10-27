@@ -1,7 +1,8 @@
 const path = require('path');
 const isDev = think.env === 'development';
+const router = require('think-router');
 const routerREST = require('think-router-rest');
-
+const cors = require('@koa/cors');
 module.exports = [
   {
     handle: 'meta',
@@ -9,6 +10,9 @@ module.exports = [
       logRequest: isDev,
       sendResponseTime: isDev
     }
+  },
+  {
+    handle: cors
   },
   {
     handle: 'resource',
@@ -33,7 +37,7 @@ module.exports = [
     }
   },
   {
-    handle: 'router',
+    handle: router,
     options: {}
   },
   {handle: routerREST, options: {}},

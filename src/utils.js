@@ -9,7 +9,11 @@ const filterKeys = (obj)=>{
   return newObj;
 };
 
+const parsePath = (path)=>{
+  
 
+
+}; 
 
 module.exports = {
   filterKeys,
