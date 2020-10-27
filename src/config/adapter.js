@@ -4,6 +4,7 @@ const fileSession = require('think-session-file');
 const mysql = require('think-model-mysql');
 const {Console, File, DateFile} = require('think-logger3');
 const path = require('path');
+const { mysql_dev, mysql_online } = require('./local_mysql');
 const isDev = think.env === 'development';
 
 /**
@@ -36,14 +37,7 @@ exports.model = {
   },
   mysql: {
     handle: mysql,
-    database: 'fengxiaoci_cn',
-    prefix: '',
-    encoding: 'utf8',
-    host: '144.34.219.183',
-    port: '3306',
-    user: 'fengxiaoci_cn',
-    password: 'dklove1314',
-    dateStrings: true
+    ... (isDev ? mysql_dev : mysql_online)
   }
 };
 

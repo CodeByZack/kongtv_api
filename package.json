@@ -2,7 +2,7 @@
   "name": "demo",
   "description": "application created by thinkjs",
   "version": "1.0.0",
-  "author": "董凯 <dongk@travelsky.com>",
+  "author": "董凯 <958059970@qq.com>",
   "scripts": {
     "start": "node development.js",
     "test": "THINK_UNIT_TEST=1 nyc ava test/ && nyc report --reporter=html",
@@ -40,7 +40,7 @@
     "metadata": {
       "name": "demo",
       "description": "application created by thinkjs",
-      "author": "董凯 <dongk@travelsky.com>",
+      "author": "董凯 <958059970@qq.com>",
       "babel": false
     },
     "projectName": "demo",
