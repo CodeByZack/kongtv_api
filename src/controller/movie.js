@@ -1,7 +1,5 @@
-const BaseRest = require('./rest.js');
-const { filterKeys } = require('../utils.js');
 const { think } = require('thinkjs');
-const UrlPathPrefix = '/api/movie';
+const UrlPathPrefix = '/movie';
 const vaildType = ['index','dy','zy','dm','dsj','search'];
 
 module.exports = class extends think.Controller {
