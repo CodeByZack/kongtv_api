@@ -1,6 +1,6 @@
 const { think } = require('thinkjs');
 const UrlPathPrefix = '/movie';
-const vaildType = ['index','dy','zy','dm','dsj','search'];
+const vaildType = ['index','updateindex','dy','zy','dm','dsj','search'];
 
 module.exports = class extends think.Controller {
   static get _REST() {
@@ -32,11 +32,33 @@ module.exports = class extends think.Controller {
     }else if(type === "search"){
       const res = await movie.search(word,page,pageSize);
       return this.json(res);
+    }else if(type === "updateindex"){
+      await this.updateIndex();
+      return this.json({msg:"更新成功！"});
     }else{
       const res = await movie.pageByCategory({type,page,pageSize,area,year,_class});
       return this.json(res);
     }
 
+  }
+
+  async updateIndex(){
+    const movie = this.model('movie');
+    // 更新首页的电影
+    await movie.updateIndex('dy');
+    await movie.updateIndex('dsj');
+    await movie.updateIndex('dm');
+    await movie.updateIndex('zy');
+    // 删除cache
+    await this.clearCache();
+    return true;
+  }
+
+  async clearCache(){
+    const cacheConfig = this.config('cache');
+    const cachePath = cacheConfig.file.cachePath;
+    await think.rmdir(cachePath,true);
+    return true;
   }
 
   postAction() {}
