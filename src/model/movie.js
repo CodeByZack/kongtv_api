@@ -38,7 +38,7 @@ module.exports = class extends think.Model {
     const {
       type,
       page = 1,
-      pageSize = 10,
+      pageSize = 12,
       area,
       year,
       _class
@@ -75,7 +75,8 @@ module.exports = class extends think.Model {
     const where = categoryKeys[type];
     if(!where)return;
 
-    where.vod_level = 1;
+    const condition = { ...where,vod_level:1 };
+
 
     const innerFn = async ()=>{
 
@@ -83,7 +84,7 @@ module.exports = class extends think.Model {
       const topAdviceArr = await getTopAdvice(type);
       
       //找到之前推荐的
-      const oldAdvice = await this.where(where).select();
+      const oldAdvice = await this.where(condition).select();
 
       //重置
       const res = await this.updateMany(oldAdvice,{vod_level:0});
