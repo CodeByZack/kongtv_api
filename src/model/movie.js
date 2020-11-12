@@ -5,7 +5,8 @@ const categoryKeys = {
   dy : {type_id_1:1},
   dsj : {type_id_1:2},
   zy : {type_id:3},
-  dm : {type_id:4}
+  dm : {type_id:4},
+  ll : {type_id:17}
 };
 
 const indexFlag = { vod_level : 1 };
