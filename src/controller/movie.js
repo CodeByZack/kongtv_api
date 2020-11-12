@@ -1,6 +1,6 @@
 const { think } = require('thinkjs');
 const UrlPathPrefix = '/movie';
-const vaildType = ['index','updateindex','dy','zy','dm','dsj','search'];
+const vaildType = ['index','updateindex','dy','zy','dm','dsj','search','ll'];
 
 module.exports = class extends think.Controller {
   static get _REST() {
