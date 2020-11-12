@@ -44,9 +44,8 @@ module.exports = class extends think.Model {
       _class
     } = options;
 
-    console.log(options);
 
-    let where = categoryKeys[type];
+    let where = {...categoryKeys[type]};
     if( area ){
       where.vod_area = ['like', area];
     }
