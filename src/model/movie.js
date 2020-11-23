@@ -95,7 +95,15 @@ module.exports = class extends think.Model {
       let count = 0;
       let newAdviceArr = [];
       for (const item of topAdviceArr) {
-        const whereLike = { ...where,vod_name:['like',`%${item}%`] }
+        const whereLike = { 
+          ...where,
+          vod_name:['like',`%${item.name}%`]
+        };
+
+        if(item.actors && item.actors.length){
+          whereLike.vod_actor = ['like', item.actors.map(actor=>`%${actor}%`)];
+        }
+
         if(count<6){
           const findObj = await this.where(whereLike).find();
           if(think.isEmpty(findObj))continue;
@@ -106,9 +114,8 @@ module.exports = class extends think.Model {
           };
         }
       }
-
+      // console.log(newAdviceArr.map(_=>_.vod_name));
     };
-
     return this.transaction(innerFn);
 
   }

@@ -14,6 +14,7 @@ const URL_MAP = {
 
 const rule = `.qy-top-row@data {
     .main-title{$name};
+    .col-p25 .qy-top-list-des a@actors{&{$|replace(/\\s*/g,"")|replace(/\\//g,"")}}
 }`;
 
 const needKeys = ['type_id','vod_time','vod_level','type_id_1','vod_actor','vod_area','vod_blurb','vod_class','vod_content','vod_director','vod_lang','vod_name','vod_pic','vod_play_url','vod_remarks','vod_year'];
@@ -34,7 +35,7 @@ const getTopAdvice = async (type)=>{
         const res = await axios.get(baseUrl);
         const html = res.data;
         const items = temme(html,rule);
-        const data = items.data.filter(_=>_ && _.name).map(_=>_.name);
+        const data = items.data.filter(_=>_ && _.name);
         return data;
     } catch (error) {
         console.log(error);
