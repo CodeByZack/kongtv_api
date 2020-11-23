@@ -82,20 +82,28 @@ module.exports = class extends think.Model {
 
       //拿到当前最新的数据
       const topAdviceArr = await getTopAdvice(type);
-      
+
       //找到之前推荐的
-      const oldAdvice = await this.where(condition).select();
+      const oldAdvice = await this.field(['vod_id']).where(condition).select();
+
+      //reset vod_level
+      const resetArr = oldAdvice.map(item=>({...item,vod_level:0}));
 
       //重置
-      const res = await this.updateMany(oldAdvice,{vod_level:0});
+      const res = await this.updateMany(resetArr);
 
       let count = 0;
+      let newAdviceArr = [];
       for (const item of topAdviceArr) {
+        const whereLike = { ...where,vod_name:['like',`%${item}%`] }
         if(count<6){
-          const findObj = await this.where({vod_name:['like',`%${item}%`]}).find();
+          const findObj = await this.where(whereLike).find();
           if(think.isEmpty(findObj))continue;
           const affectsRows = await this.where({vod_id:findObj.vod_id}).update({vod_level:1});
-          if(affectsRows > 0) count++;
+          if(affectsRows > 0) {
+            count++;
+            newAdviceArr.push(findObj);
+          };
         }
       }
 
