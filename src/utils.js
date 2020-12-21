@@ -17,7 +17,7 @@ const rule = `.qy-top-row@data {
     .col-p25 .qy-top-list-des a@actors{&{$|replace(/\\s*/g,"")|replace(/\\//g,"")}}
 }`;
 
-const needKeys = ['type_id','vod_time','vod_level','type_id_1','vod_actor','vod_area','vod_blurb','vod_class','vod_content','vod_director','vod_lang','vod_name','vod_pic','vod_play_url','vod_remarks','vod_year'];
+const needKeys = ['vod_id','type_id','vod_time','vod_level','type_id_1','vod_actor','vod_area','vod_blurb','vod_class','vod_content','vod_director','vod_lang','vod_name','vod_pic','vod_play_url','vod_remarks','vod_year'];
 
 const needKeysStr = needKeys.join(',');
 
