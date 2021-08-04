@@ -100,9 +100,9 @@ module.exports = class extends think.Model {
           vod_name:['like',`%${item.name}%`]
         };
 
-        if(item.actors && item.actors.length){
-          whereLike.vod_actor = ['like', item.actors.map(actor=>`%${actor}%`)];
-        }
+        // if(item.actors && item.actors.length){
+        //   whereLike.vod_actor = ['like', item.actors.map(actor=>`%${actor}%`)];
+        // }
 
         if(count<6){
           const findObj = await this.where(whereLike).find();
