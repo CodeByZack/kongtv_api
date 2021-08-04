@@ -1,9 +1,9 @@
 const axios = require('axios');
 const temme = require('temme').default;
-const AIQIYI_DY = 'https://www.iqiyi.com/ranks/hotplay/movie';
-const AIQIYI_DSJ = 'https://www.iqiyi.com/ranks/hotplay/tv';
-const AIQIYI_DM= 'https://www.iqiyi.com/ranks/hotplay/anime';
-const AIQIYI_ZY = 'https://www.iqiyi.com/ranks/hotplay/variety';
+const AIQIYI_DY = 'https://www.iqiyi.com/ranks1/1/0';
+const AIQIYI_DSJ = 'https://www.iqiyi.com/ranks1/2/0';
+const AIQIYI_DM= 'https://www.iqiyi.com/ranks1/4/0';
+const AIQIYI_ZY = 'https://www.iqiyi.com/ranks1/6/0';
 
 const URL_MAP = {
     dy : AIQIYI_DY,
@@ -12,9 +12,9 @@ const URL_MAP = {
     zy :AIQIYI_ZY
 };
 
-const rule = `.qy-top-row@data {
-    .main-title .title-link{$name};
-    .main-title .sub-des@actors{&{$|replace(/\\s*/g,"")|replace(/\\//g,"")}}
+const rule = `.rvi__box@data {
+    .rvi__tit1{$name};
+    .rvi__type__txt@actors{&{$|replace(/\\s*/g,"")|replace(/\\//g,"")}}
 }`;
 
 const needKeys = ['vod_id','type_id','vod_time','vod_level','type_id_1','vod_actor','vod_area','vod_blurb','vod_class','vod_content','vod_director','vod_lang','vod_name','vod_pic','vod_play_url','vod_remarks','vod_year'];
