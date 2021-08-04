@@ -13,8 +13,8 @@ const URL_MAP = {
 };
 
 const rule = `.category-wrap_iQLoo @data {
-    .c-single-text-ellipsis{$name|replace(/\s*/g,"")};
-    .main-title .sub-des@actors{&{$|replace(/\s*/g,"")|replace(/\//g,"")}}
+    .c-single-text-ellipsis{$name|replace(/\s*/g,"")}
+    .main-title .sub-des@actors{}
 }`;
 
 const needKeys = ['vod_id','type_id','vod_time','vod_level','type_id_1','vod_actor','vod_area','vod_blurb','vod_class','vod_content','vod_director','vod_lang','vod_name','vod_pic','vod_play_url','vod_remarks','vod_year'];
