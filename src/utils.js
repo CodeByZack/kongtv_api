@@ -60,7 +60,7 @@ const getTopAdvice = async (type) => {
     });
     const html = res.data;
     const items = temme(html, rule);
-    const data = items.data.filter((_) => _ && _.name);
+    const data = items.data.filter((_) => _ && _.name).map(_=>({ name : _.name.replace(/\s*/g,'') , actors : [] }));
     return data;
   } catch (error) {
     console.log(error);
